@@ -1,179 +1,170 @@
-# 📚 Consulta Mortal: Crimen en la Librería SQL (Web Scraping)
+# 📚 Deadly Query: Crime in the SQL Bookstore (Web Scraping)
 
 ## 🕵️‍♂️ TL;DR (1 min)
 
-Pipeline de datos end-to-end que:
+An end-to-end data pipeline that:
 
-* Extrae libros desde la web (scraping)
-* Enriquece autores con API externa
-* Modela datos en base relacional normalizada
-* Ejecuta consultas SQL para análisis real
-* Optimiza performance con índices
+- Scrapes books from a website  
+- Enriches author data using an external API  
+- Models data in a normalized relational database  
+- Runs SQL queries for real analysis  
+- Optimizes performance using indexes  
 
-Resultado: datos incompletos → información accionable
-
----
-
-
-## 🎯 Objetivo
-
-Construir un sistema capaz de:
-
-* Scrapear **todas las categorías y libros** del sitio
-* Enriquecer autores desde una API externa (sin carga manual)
-* Diseñar una base de datos relacional normalizada
-* Ejecutar consultas SQL útiles
-* Optimizar performance mediante índices
+**Result:** incomplete data → actionable insights  
 
 ---
 
-## ⚙️ Tecnologías utilizadas
+## 🎯 Objective
 
-* Python
-* requests
-* BeautifulSoup
-* pandas
-* sqlite3
-* concurrent.futures (multithreading)
-* matplotlib
+Build a system capable of:
 
----
-
-## 🎯 Problema
-
-El dataset original (*Books to Scrape*):
-
-* No incluye autores
-* No permite análisis complejos
-* No está preparado para consultas reales
+- Scraping **all categories and books** from the website  
+- Enriching author data via an external API (no manual input)  
+- Designing a normalized relational database  
+- Executing meaningful SQL queries  
+- Optimizing performance with indexing  
 
 ---
 
-## 💡 Solución
+## ⚙️ Technologies Used
 
-Se construyó un sistema que:
+- Python  
+- requests  
+- BeautifulSoup  
+- pandas  
+- sqlite3  
+- concurrent.futures (multithreading)  
+- matplotlib  
 
-1. Extrae datos desde la web
-2. Enriquece información con API externa
-3. Diseña una base de datos relacional
-4. Permite análisis mediante SQL
-5. Optimiza consultas con índice
+---
 
-## 🏗️ Arquitectura del sistema
+## 🎯 Problem
 
-Pipeline completo:
+The original dataset (*Books to Scrape*):
+
+- Does not include authors  
+- Does not support complex analysis  
+- Is not structured for real-world querying  
+
+---
+
+## 💡 Solution
+
+A system was built that:
+
+1. Extracts data from the web  
+2. Enriches information using an external API  
+3. Designs a relational database  
+4. Enables analysis through SQL  
+5. Optimizes queries using indexing  
+
+---
+
+## 🏗️ System Architecture
+
+Full pipeline:
 
 1. **Scraping**
+   - Category navigation  
+   - Automatic pagination  
+   - Structured data extraction  
 
-   * Navegación por categorías
-   * Paginación automática
-   * Extracción estructurada
+2. **Transformation**
+   - Data cleaning  
+   - Conversion into DataFrame  
 
-2. **Transformación**
+3. **Enrichment**
+   - API requests based on book titles  
+   - Author retrieval  
+   - Parallel processing with threads  
 
-   * Limpieza de datos
-   * Conversión a DataFrame
+4. **Persistence**
+   - SQLite database  
+   - Normalized relational model  
 
-3. **Enriquecimiento**
+5. **Analysis**
+   - SQL queries (joins, aggregations)  
 
-   * Consulta a API por título
-   * Obtención de autores
-   * Paralelización con threads
-
-4. **Persistencia**
-
-   * Base de datos SQLite
-   * Modelo relacional normalizado
-
-5. **Análisis**
-
-   * Consultas SQL (joins, agregaciones)
-
-6. **Optimización**
-
-   * Indexación
-   * Benchmark de performance
+6. **Optimization**
+   - Indexing  
+   - Performance benchmarking  
 
 ---
 
-## 🧠 Lógica del sistema
+## 🧠 System Logic
 
 ### Scraping
 
-* Navegación completa por categorías y paginación
-* Extracción de:
-
-  * título
-  * precio
-  * rating
-  * stock
-  * categoría
-
-
-## 🗃️ Modelo de base de datos
-
-Tablas:
-
-* `libros`
-* `autores`
-* `categorias`
-* `libro_autor`
-
-Diseñado para:
-
-* evitar duplicados
-* mantener integridad
-* escalar consultas
+- Full navigation across categories and pages  
+- Extraction of:
+  - title  
+  - price  
+  - rating  
+  - stock  
+  - category  
 
 ---
 
-## 🔍 Consultas realizadas
+## 🗃️ Database Model
 
-Ejemplos clave:
+Tables:
 
-* 📈 Libros con rating alto y bajo precio
-* 🏆 Top 5 autores mejor valorados
-* 💰 Precio promedio por categoría
-* ⚠️ Autores con libros de 1 estrella
-* 📊 Distribución de libros por categoría
+- `books`  
+- `authors`  
+- `categories`  
+- `book_author`  
 
-Estas consultas permiten análisis de:
+Designed to:
 
-* calidad
-* reputación
-* mercado editorial
-
----
-
-## ⚡ Optimización de performance
-
-Se realizó una prueba controlada:
-
-1. Consulta sin índice
-2. Medición de tiempo
-3. Creación de índice en `id_categoria`
-4. Nueva medición
-
-Resultado:
-
-* Mejora significativa en velocidad de consulta
-
-Esto demuestra cómo los índices impactan en sistemas reales.
+- Avoid duplication  
+- Maintain data integrity  
+- Scale for complex queries  
 
 ---
 
-## 📊 Visualización
+## 🔍 Queries Performed
 
-Se generaron gráficos como:
+Key examples:
 
-* Distribución de libros por categoría (bar chart)
-* Proporción de categorías (pie chart)
+- 📈 High-rated, low-price books  
+- 🏆 Top 5 highest-rated authors  
+- 💰 Average price by category  
+- ⚠️ Authors with 1-star books  
+- 📊 Distribution of books by category  
 
-Esto permite interpretar los datos de forma más intuitiva.
+These queries enable analysis of:
+
+- quality  
+- reputation  
+- publishing trends  
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+## ⚡ Performance Optimization
+
+A controlled test was performed:
+
+1. Query without index  
+2. Time measurement  
+3. Index creation on `category_id`  
+4. New measurement  
+
+**Result:**
+
+- Significant improvement in query speed  
+
+---
+
+## 📊 Visualization
+
+Generated charts:
+
+- Book distribution by category (bar chart)  
+- Category proportions (pie chart)  
+
+---
+
+## 🚀 How to Run the Project
 
 ```bash
 pip install requests beautifulsoup4 pandas matplotlib
@@ -181,38 +172,98 @@ pip install requests beautifulsoup4 pandas matplotlib
 
 ---
 
-### Ejecución
+### ▶️ Execution
 
-1. Abrir el notebook principal
-2. Ejecutar celdas en orden
+1. Open the main notebook  
+2. Run cells sequentially  
 
 ---
 
-### ⏱️ Qué esperar
+### ⏱️ Expected Runtime
 
-* Scraping: 1–3 min
-* Enriquecimiento API: 3–6 min
-* DB + consultas: inmediato
+- Scraping: 1–3 min  
+- API enrichment: 3–6 min  
+- Database + queries: immediate  
 
 ---
 
 ### 📂 Output
 
-* `books.db` (base estructurada)
-* DataFrame enriquecido
-* Queries listas para análisis
-* Visualizaciones
+- `books.db` (structured database)  
+- Enriched DataFrame  
+- SQL queries ready for analysis  
+- Visualizations  
 
 ---
 
-## ✨ Mejoras interesantes para el proyecto
+## ✨ Possible Improvements
 
-* Implementar cache para API
-* Usar SQLAlchemy para ORM
-* Agregar más fuentes de datos
-* Crear dashboard interactivo
-* Automatizar el pipeline completo
+- Implement API caching  
+- Use SQLAlchemy (ORM)  
+- Add more data sources  
+- Build an interactive dashboard  
+- Automate the entire pipeline  
 
 ---
 
+# 📌 Resumen en Español
 
+Este proyecto desarrolla un pipeline de datos completo que permite extraer, enriquecer, almacenar y analizar información de libros obtenida desde la web.
+
+El sistema parte de un dataset incompleto y lo transforma en una base de datos estructurada, lista para consultas reales y análisis más profundos.
+
+---
+
+## 🎯 Objetivo
+
+- Extraer datos mediante web scraping  
+- Enriquecer información con una API externa  
+- Diseñar una base de datos relacional normalizada  
+- Ejecutar consultas SQL para análisis  
+- Optimizar el rendimiento mediante índices  
+
+---
+
+## ⚙️ Funcionamiento
+
+- Scraping completo del sitio (categorías y paginación)  
+- Limpieza y estructuración de datos  
+- Enriquecimiento con información de autores  
+- Almacenamiento en SQLite  
+- Consultas SQL para análisis  
+- Optimización mediante indexación  
+
+---
+
+## 📊 Capacidades del sistema
+
+- Integración de múltiples fuentes de datos  
+- Procesamiento paralelo (multithreading)  
+- Modelo relacional escalable  
+- Análisis mediante SQL  
+- Visualización de datos  
+
+---
+
+## 🚨 Características destacadas
+
+- Pipeline end-to-end  
+- Enriquecimiento automático con API  
+- Uso de concurrencia para eficiencia  
+- Optimización con índices  
+- Visualización clara de resultados  
+
+---
+
+## 🧠 Conclusión
+
+El proyecto demuestra cómo transformar datos incompletos en información útil mediante un flujo estructurado.
+
+Permite:
+
+- Mejorar la calidad de los datos  
+- Facilitar la toma de decisiones  
+- Optimizar consultas  
+- Escalar análisis complejos  
+
+En esencia, convierte un dataset limitado en una fuente rica de conocimiento.
